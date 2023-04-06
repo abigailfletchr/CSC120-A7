@@ -12,12 +12,30 @@ public class Cafe extends Building {
      * @param nFloors the number of the floors of the building
      */
     public Cafe(String name, String address, int nFloors) {
-        // System.out.println("You have built a cafe: ☕");
         super(name, address, nFloors);
         this.nCoffeeOunces = 60;
         this.nSugarPackets = 35;
         this.nCreams = 35;
         this.nCups = 75;
+        System.out.println("You have built a cafe: ☕");
+    }
+
+    public Cafe(String name) {
+        super(name, "No specified cafe address", 3);
+        this.nCoffeeOunces = 60;
+        this.nSugarPackets = 35;
+        this.nCreams = 35;
+        this.nCups = 75;
+        System.out.println("You have built a cafe: ☕");
+    }
+
+    public Cafe(String name, String address, int nFloors, int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups) {
+        super(name, address, nFloors);
+        this.nCoffeeOunces = nCoffeeOunces;
+        this.nSugarPackets = nSugarPackets;
+        this.nCreams = nCreams;
+        this.nCups = nCups;
+        System.out.println("You have built a cafe: ☕");
     }
     
     /**
@@ -56,7 +74,7 @@ public class Cafe extends Building {
     }
 
     public void showOptions() {
-        System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + goToFloor(n)");
+        System.out.println("Available options at " + this.name + ":\n + sellCoffee() \n + restock()");
     }
 
     public static void main(String[] args) {

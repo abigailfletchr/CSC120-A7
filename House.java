@@ -18,16 +18,20 @@ public class House extends Building {
     this.hasDiningRoom = hasDiningRoom;
   }
 
-  public House(boolean hasElevator) {
-    this(name, address, nFloors, hasElevator);
+  public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator) {
     super(name, address, nFloors);
+    this.residents = new ArrayList<String>();
+    this.hasDiningRoom = hasDiningRoom;
     this.hasElevator = hasElevator;
   }
 
+  public House(String name, boolean hasDiningRoom, boolean hasElevator) {
+    super(name, "No specified house address", 2);
+    this.residents = new ArrayList<String>();
+    this.hasDiningRoom = hasDiningRoom;
+    this.hasElevator = hasElevator;
+  }
 
-  
-
- 
   /**
    * Manipulator that sets a dining room to a house.
    * @return hasDiningRoom sets a dining room to a house
@@ -79,19 +83,23 @@ public class House extends Building {
   }
 
   public void showOptions() {
-    System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + goToFloor(n)");
-}
+    System.out.println("Available options at " + this.name + ":\n + hasDiningRoom() \n + nResidents() \n + moveIn() \n + moveOut()\n + goToFloor()\n + isResident(n)");
+  }
 
 // need to add boolean value bc not all houses have elevators
 public void goToFloor(int floorNum) {
-  if (this.activeFloor == -1) {
+  if(this.hasElevator){
+    if (this.activeFloor == -1) {
       throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
+    }
+    if (floorNum < 1 || floorNum > this.nFloors) {
+        throw new RuntimeException("Invalid floor number. Valid range for this Building is 1-" + this.nFloors +".");
+    }
+    System.out.println("You are now on floor #" + floorNum + " of " + this.name);
+    this.activeFloor = floorNum;
+  }else{
+    throw new RuntimeException("Sorry, this building does not have an elevator so you can't navigate floors.");
   }
-  if (floorNum < 1 || floorNum > this.nFloors) {
-      throw new RuntimeException("Invalid floor number. Valid range for this Building is 1-" + this.nFloors +".");
-  }
-  System.out.println("You are now on floor #" + floorNum + " of " + this.name);
-  this.activeFloor = floorNum;
 }
 
   public static void main(String[] args) {

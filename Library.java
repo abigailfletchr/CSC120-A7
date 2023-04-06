@@ -2,6 +2,7 @@ import java.util.Hashtable;
 public class Library extends Building{
 
   private Hashtable<String, Boolean> collection;
+  private int nAvailableStudySpaces;
 
   /**
    * Constructor for the Library class extending the Building class.
@@ -13,6 +14,21 @@ public class Library extends Building{
       super(name, address, nFloors);
       // System.out.println("You have built a library: 📖");
       this.collection = new Hashtable<String, Boolean>();
+      this.nAvailableStudySpaces = 0;
+    }
+
+    // in reflection i wanna say that this library would be created with the core textbooks to each course
+    public Library(String name, String address, int nFloors, Hashtable<String, Boolean> collection) {
+      super(name, address, nFloors);
+      // System.out.println("You have built a library: 📖");
+      this.collection = collection;
+    }
+
+    public Library(String name, String address, int nFloors, int nAvailableStudySpaces) {
+      super(name, address, nFloors);
+      // System.out.println("You have built a library: 📖");
+      this.collection = new Hashtable<String, Boolean>();
+      this.nAvailableStudySpaces = nAvailableStudySpaces;
     }
 
   /**
@@ -70,6 +86,10 @@ public class Library extends Building{
       return this.collection.get(title);
     }
 
+    public int nAvailableStudySpaces(){
+      return this.nAvailableStudySpaces;
+    }
+
     /**
      * Method that prints out the Library's entire book collection and check out status.
      */
@@ -80,7 +100,7 @@ public class Library extends Building{
     }
 
     public void showOptions() {
-      System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + goToFloor(n)");
+      System.out.println("Available options at " + this.name + ":\n + addTitle() \n + removeTitle() \n + checkOut() \n + returnBook()\n + isAvailable()\n + printCollection()\n + goToFloor()\n + containsTitle() + nAvailableStudySpaces()\n");
   }
 
   public void goToFloor(int floorNum) {
@@ -96,7 +116,19 @@ public class Library extends Building{
 
 
     public static void main(String[] args) {
-      new Library("Neilson Library", "1 Chapin Way", 4);
+      Library neilson = new Library("Neilson Library", "1 Chapin Way", 4);
+      neilson.printCollection();
+
+      Hashtable<String, Boolean> col = new Hashtable<String, Boolean>();
+      col.putIfAbsent("The Key to Theatre", true);
+      col.putIfAbsent("Theory of Evolution", true);
+      col.putIfAbsent("Organic Chemistry II", true);
+      Library josten = new Library("Josten", "123 by Ainsworth", 3, col);
+      josten.printCollection();
+
+      Library young = new Library("Young", "456 in Bass", 4, 100);
+      young.printCollection();
+
     
     }
   
