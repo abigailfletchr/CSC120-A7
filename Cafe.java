@@ -1,5 +1,11 @@
 public class Cafe extends Building {
 
+    /**
+     * nCoffeeOunces is number of ounces of coffee in the cafe stock
+     * nSugarPackets is number of sugar packets in the cafe stock
+     * nCreams is the number of creamers in the cafe stock
+     * nCups is the number of cups in the cafe stock
+     */
     private int nCoffeeOunces;
     private int nSugarPackets;
     private int nCreams;
@@ -20,6 +26,10 @@ public class Cafe extends Building {
         System.out.println("You have built a cafe: ☕");
     }
 
+    /**
+     * An overloaded constructor for the Cafe class
+     * @param name the name of the building
+     */
     public Cafe(String name) {
         super(name, "No specified cafe address", 3);
         this.nCoffeeOunces = 60;
@@ -29,6 +39,16 @@ public class Cafe extends Building {
         System.out.println("You have built a cafe: ☕");
     }
 
+    /**
+     * An overloaded constructor for the Cafe class
+     * @param name the name of the building
+     * @param address the address of the building
+     * @param nFloors the number of floors in the building
+     * @param nCoffeeOunces the amount of coffee ounces in stock at the cafe
+     * @param nSugarPackets the amount of sugar packets in stock at the cafe
+     * @param nCreams the amount of creamers in stock at the cafe
+     * @param nCups the number of cups in stock at the cafe
+     */
     public Cafe(String name, String address, int nFloors, int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups) {
         super(name, address, nFloors);
         this.nCoffeeOunces = nCoffeeOunces;
@@ -73,8 +93,11 @@ public class Cafe extends Building {
         this.nCups += nCups;
     }
 
+    /**
+     * Method that displays the options the Cafe class provides.
+     */
     public void showOptions() {
-        System.out.println("Available options at " + this.name + ":\n + sellCoffee() \n + restock()");
+        System.out.println("Available options at " + this.name + ":\n + sellCoffee(s, sp, c) \n + restock(o, sp, c, cu)");
     }
 
     public static void main(String[] args) {

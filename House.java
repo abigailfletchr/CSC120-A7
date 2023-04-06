@@ -1,6 +1,11 @@
 import java.util.ArrayList;  
 public class House extends Building {
 
+  /**
+   * ArrayList<String> residents is an array list that contains the names of residents in a house
+   * hasDiningRoom gives a boolean value if the house has a dining room
+   * hasElevator gives a boolean value if the house has an elevator
+   */
   private ArrayList<String> residents;
   private boolean hasDiningRoom;
   private boolean hasElevator;
@@ -18,6 +23,14 @@ public class House extends Building {
     this.hasDiningRoom = hasDiningRoom;
   }
 
+  /**
+   * An overloaded constructor for the House class
+   * @param name the name of the building
+   * @param address the address of the building
+   * @param nFloors the number of floors in the building
+   * @param hasDiningRoom boolean value if the house has a dining room
+   * @param hasElevator boolean value if the house has an elevator
+   */
   public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator) {
     super(name, address, nFloors);
     this.residents = new ArrayList<String>();
@@ -25,6 +38,12 @@ public class House extends Building {
     this.hasElevator = hasElevator;
   }
 
+  /**
+   * An overloaded constructor for the House class
+   * @param name the name of the building
+   * @param hasDiningRoom boolean value if the house has a dining room
+   * @param hasElevator boolean value if the house has an elevator
+   */
   public House(String name, boolean hasDiningRoom, boolean hasElevator) {
     super(name, "No specified house address", 2);
     this.residents = new ArrayList<String>();
@@ -82,11 +101,17 @@ public class House extends Building {
     return this.residents.contains(name);
   }
 
+  /**
+   * Method that displays the options that the House class provides
+   */
   public void showOptions() {
-    System.out.println("Available options at " + this.name + ":\n + hasDiningRoom() \n + nResidents() \n + moveIn() \n + moveOut()\n + goToFloor()\n + isResident(n)");
+    System.out.println("Available options at " + this.name + ":\n + hasDiningRoom() \n + nResidents() \n + moveIn(nm) \n + moveOut(nm)\n + goToFloor(n)\n + isResident(nm)");
   }
 
-// need to add boolean value bc not all houses have elevators
+/**
+ * Method that acts as an elevator and goes up and down floors
+   * @param floorNum the floor number it is on
+ */
 public void goToFloor(int floorNum) {
   if(this.hasElevator){
     if (this.activeFloor == -1) {

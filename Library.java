@@ -1,6 +1,10 @@
 import java.util.Hashtable;
 public class Library extends Building{
 
+  /**
+   * Hastable<String, Boolean> collection is the hashtable that represents/stores the books in the library
+   * nAvailableStudySpaces is the number of availabel study spaces in the library
+   */
   private Hashtable<String, Boolean> collection;
   private int nAvailableStudySpaces;
 
@@ -17,13 +21,26 @@ public class Library extends Building{
       this.nAvailableStudySpaces = 0;
     }
 
-    // in reflection i wanna say that this library would be created with the core textbooks to each course
+    /**
+     * An overloaded constructor for the Library class
+     * @param name the name of the building
+     * @param address the address of the building
+     * @param nFloors the amount of floors in the building
+     * @param collection a library of books already created when the library is created
+     */
     public Library(String name, String address, int nFloors, Hashtable<String, Boolean> collection) {
       super(name, address, nFloors);
       // System.out.println("You have built a library: 📖");
       this.collection = collection;
     }
 
+    /**
+     * An overloaded constructor for the Library class
+     * @param name the name of the building
+     * @param address the address of the building
+     * @param nFloors the amount of floors in the building
+     * @param nAvailableStudySpaces the number of study spaces available in the library
+     */
     public Library(String name, String address, int nFloors, int nAvailableStudySpaces) {
       super(name, address, nFloors);
       // System.out.println("You have built a library: 📖");
@@ -73,7 +90,7 @@ public class Library extends Building{
      * @param title
      * @return
      */
-    public boolean containsTitle(String title){ // have chai look
+    public boolean containsTitle(String title){
       return this.collection.contains(title);
     }
 
@@ -86,6 +103,10 @@ public class Library extends Building{
       return this.collection.get(title);
     }
 
+    /**
+     * Method that checks the number of available study spaces
+     * @return this.nAvailableStudySpaces returns number of available study spaces
+     */
     public int nAvailableStudySpaces(){
       return this.nAvailableStudySpaces;
     }
@@ -99,10 +120,17 @@ public class Library extends Building{
       }
     }
 
+    /**
+     * Method that shows the options the class Library provided
+     */
     public void showOptions() {
-      System.out.println("Available options at " + this.name + ":\n + addTitle() \n + removeTitle() \n + checkOut() \n + returnBook()\n + isAvailable()\n + printCollection()\n + goToFloor()\n + containsTitle() + nAvailableStudySpaces()\n");
+      System.out.println("Available options at " + this.name + ":\n + addTitle(t) \n + removeTitle(t) \n + checkOut(t) \n + returnBook(t)\n + isAvailable(t)\n + printCollection()\n + goToFloor(n)\n + containsTitle(t) + nAvailableStudySpaces(n)\n");
   }
 
+  /**
+   * Method that acts as an elevator and goes up and down floors
+   * @param floorNum the floor number it is on
+   */
   public void goToFloor(int floorNum) {
     if (this.activeFloor == -1) {
         throw new RuntimeException("You are not inside this Building. Must call enter() before navigating between floors.");
@@ -119,15 +147,15 @@ public class Library extends Building{
       Library neilson = new Library("Neilson Library", "1 Chapin Way", 4);
       neilson.printCollection();
 
-      Hashtable<String, Boolean> col = new Hashtable<String, Boolean>();
-      col.putIfAbsent("The Key to Theatre", true);
-      col.putIfAbsent("Theory of Evolution", true);
-      col.putIfAbsent("Organic Chemistry II", true);
-      Library josten = new Library("Josten", "123 by Ainsworth", 3, col);
-      josten.printCollection();
+      // Hashtable<String, Boolean> col = new Hashtable<String, Boolean>();
+      // col.putIfAbsent("The Key to Theatre", true);
+      // col.putIfAbsent("Theory of Evolution", true);
+      // col.putIfAbsent("Organic Chemistry II", true);
+      // Library josten = new Library("Josten", "123 by Ainsworth", 3, col);
+      // josten.printCollection();
 
-      Library young = new Library("Young", "456 in Bass", 4, 100);
-      young.printCollection();
+      // Library young = new Library("Young", "456 in Bass", 4, 100);
+      // young.printCollection();
 
     
     }
