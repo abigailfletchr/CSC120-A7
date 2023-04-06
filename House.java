@@ -3,6 +3,7 @@ public class House extends Building {
 
   private ArrayList<String> residents;
   private boolean hasDiningRoom;
+  private boolean hasElevator;
 
   /**
    * Constructor for the House class extending the Building class.
@@ -16,6 +17,15 @@ public class House extends Building {
     this.residents = new ArrayList<String>();
     this.hasDiningRoom = hasDiningRoom;
   }
+
+  public House(boolean hasElevator) {
+    this(name, address, nFloors, hasElevator);
+    super(name, address, nFloors);
+    this.hasElevator = hasElevator;
+  }
+
+
+  
 
  
   /**
@@ -82,7 +92,7 @@ public void goToFloor(int floorNum) {
   }
   System.out.println("You are now on floor #" + floorNum + " of " + this.name);
   this.activeFloor = floorNum;
-}s
+}
 
   public static void main(String[] args) {
     new House("King House", "10 Elm Street", 4, true);
