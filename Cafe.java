@@ -67,14 +67,13 @@ public class Cafe extends Building {
      * @param nCreams the amount of creamer used
      */
     public void sellCoffee(int size, int nSugarPackets, int nCreams){
-        if(this.nCoffeeOunces-size > 0 && this.nSugarPackets-nSugarPackets > 0 && this.nCreams-nCreams > 0 && this.nCups-1 > 0){
-            // then i can make a coffee
+        if(this.nCoffeeOunces-size < 0 && this.nSugarPackets-nSugarPackets < 0 && this.nCreams-nCreams < 0 && this.nCups-1 < 0){
+            this.restock(60, 35, 35, 75);
+        } else{
             this.nCoffeeOunces -= size;
             this.nSugarPackets -= nSugarPackets;
             this.nCreams -= nCreams;
             this.nCups = nCups - 1;
-        } else{
-            this.restock(60, 35, 35, 75);
         }
     }
 
